@@ -9,12 +9,11 @@ function App() {
       <Layout>
         <div className="flex flex-wrap items-start gap-6">
           <div className="">
-            <h2>Nuevo Turno</h2>
             <FormularioTurnos/>
           </div>
 
           <div>
-            <h2>Turnos Agendados</h2>
+            <h2 className="text-texto font-bold">Turnos Agendados</h2>
           </div>
         </div>
       </Layout>
