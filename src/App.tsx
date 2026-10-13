@@ -1,23 +1,17 @@
 import { FormularioTurnos } from './components/FormularioTurnos';
 import {Layout} from './layout/Layout';
+import {ListaTurnos} from './components/ListaTurnos'
 
 function App() {
   
 
   return (
-    <>
       <Layout>
         <div className="flex flex-wrap items-start gap-6">
-          <div className="">
             <FormularioTurnos/>
-          </div>
-
-          <div>
-            <h2 className="text-texto font-bold">Turnos Agendados</h2>
-          </div>
+            <ListaTurnos/>
         </div>
       </Layout>
-    </>
   )
 }
 

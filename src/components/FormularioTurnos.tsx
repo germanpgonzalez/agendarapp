@@ -39,7 +39,7 @@ const claseInput =
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full max-w-100 flex-col gap-4.5 rounded-[14px] border border-borde bg-superficie p-7 mt-6"
+      className="flex w-full max-w-100 flex-col gap-4.5 rounded-[14px] border border-borde bg-superficie p-7"
     >
       <h2 className="text-texto font-bold text-[22px]">Nuevo Turno</h2>
       <div className="grid grid-cols-2 gap-3 mt-2">
