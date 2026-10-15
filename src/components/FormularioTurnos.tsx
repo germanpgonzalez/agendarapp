@@ -1,12 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
-
-type DatosTurno = {
-  nombre: string;
-  apellido: string;
-  fecha: string;
-  telefono: string;
-  detalle: string;
-};
+import type { DatosTurno } from '../types'
 
 const FORM_VACIO: DatosTurno = {
   nombre: "",
