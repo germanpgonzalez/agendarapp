@@ -9,12 +9,17 @@ const FORM_VACIO: DatosTurno = {
   detalle: "",
 };
 
-export const FormularioTurnos = () => {
+type Props = {
+  onAgendar : (turno : DatosTurno)  => void
+}
+
+export const FormularioTurnos = ({onAgendar} : Props) => {
   const [form, setForm] = useState<DatosTurno>(FORM_VACIO);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Prueba submit");
+    onAgendar(form)
+    setForm(FORM_VACIO)
   };
 
   const handleChange = (
