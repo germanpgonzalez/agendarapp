@@ -7,6 +7,8 @@ const claseBoton = "flex size-11 cursor-pointer items-center justify-center roun
 
 type Props = {
   turno: Turno;
+  eliminarTurno: (id: string) => void
+  editarTurno: (id: string) => void
 };
 
 const formatearFecha = (valor: string) =>
@@ -15,7 +17,7 @@ const formatearFecha = (valor: string) =>
     timeStyle: "short",
   });
 
-export const FilaTurno = ({ turno }: Props) => {
+export const FilaTurno = ({ turno, eliminarTurno, editarTurno }: Props) => {
   return (
     <tr className="border-b border-borde">
       <td className="px-3 py-3.5 text-[15px] font-bold text-texto">
@@ -32,6 +34,7 @@ export const FilaTurno = ({ turno }: Props) => {
             type="button"
             aria-label="Editar turno"
             className={`${claseBoton} text-suave`}
+            onClick={() => editarTurno(turno.id)}
           >
             <LuPencilLine aria-hidden="true" className="size-5" />
           </button>
@@ -39,6 +42,7 @@ export const FilaTurno = ({ turno }: Props) => {
           <button
             type="button"
             aria-label="Cancelar turno"
+            onClick={() => eliminarTurno(turno.id)}
             className={`${claseBoton} text-peligro`}
           >
             <FaRegTrashAlt aria-hidden="true" className="size-5" />

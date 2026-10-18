@@ -1,16 +1,22 @@
-import { data } from "../data/data";
 import { FilaTurno } from "./FilaTurno";
+import type { Turno } from '../types/index'
 
 const claseTh = "px-3 py-2.5 first:rounded-l-lg last:rounded-r-lg";
 
-export const ListaTurnos = () => {
+type Props = {
+  turnos: Turno[]
+  eliminarTurno: (id : string) => void
+  editarTurno: ( id: string) => void
+}
+
+export const ListaTurnos = ({turnos, eliminarTurno, editarTurno}: Props) => {
   return (
     <section className="flex min-w-0 grow basis-140 flex-col gap-5 rounded-[14px] border border-borde bg-superficie p-7">
       <div>
         <h2 className="text-texto font-bold text-[22px]">Turnos Agendados</h2>
         <p className="mt-1.5 text-sm text-suave">
-          {data.length}{" "}
-          {data.length === 1 ? "turno agendado" : "turnos agendados"}
+          {turnos.length}{" "}
+          {turnos.length === 1 ? "turno agendado" : "turnos agendados"}
         </p>
       </div>
 
@@ -26,13 +32,13 @@ export const ListaTurnos = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((turno) => (
-              <FilaTurno key={turno.id} turno={turno} />
+            {turnos.map((turno) => (
+              <FilaTurno key={turno.id} turno={turno} eliminarTurno={eliminarTurno} editarTurno={editarTurno}/>
             ))}
           </tbody>
         </table>
       </div>
-      {data.length === 0 && (
+      {turnos.length === 0 && (
         <p className="py-10 text-center text-sm text-suave">
           Todavía no hay turnos agendados
         </p>

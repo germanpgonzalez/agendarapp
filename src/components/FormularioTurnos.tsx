@@ -1,5 +1,5 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
-import type { DatosTurno } from '../types'
+import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import type { DatosTurno, Turno } from '../types'
 
 const FORM_VACIO: DatosTurno = {
   nombre: "",
@@ -9,12 +9,18 @@ const FORM_VACIO: DatosTurno = {
   detalle: "",
 };
 
-export const FormularioTurnos = () => {
+type Props = {
+  onAgendar : (turno : DatosTurno)  => void
+  actTurno : Turno | null;
+}
+
+export const FormularioTurnos = ({onAgendar, actTurno} : Props) => {
   const [form, setForm] = useState<DatosTurno>(FORM_VACIO);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Prueba submit");
+    onAgendar(form)
+    setForm(FORM_VACIO)
   };
 
   const handleChange = (
@@ -28,6 +34,22 @@ export const FormularioTurnos = () => {
 
 const claseInput =
   "h-11.5 w-full min-w-0 rounded-lg border border-borde-input bg-superficie px-3.5 text-[15px] text-texto placeholder:text-suave/60 focus:outline-none focus:ring-2 focus:ring-primario/40";
+
+
+  useEffect(() => {
+    if(actTurno){
+      setForm({
+        nombre: actTurno.nombre,
+        apellido: actTurno.apellido,
+        telefono: actTurno.telefono,
+        fecha: actTurno.fecha,
+        detalle: actTurno.detalle
+      }) 
+    } else {
+        setForm(FORM_VACIO)
+      }
+
+  },[actTurno])
 
   return (
     <form
