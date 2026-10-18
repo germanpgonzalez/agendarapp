@@ -6,9 +6,10 @@ const claseTh = "px-3 py-2.5 first:rounded-l-lg last:rounded-r-lg";
 type Props = {
   turnos: Turno[]
   eliminarTurno: (id : string) => void
+  editarTurno: ( id: string) => void
 }
 
-export const ListaTurnos = ({turnos, eliminarTurno}: Props) => {
+export const ListaTurnos = ({turnos, eliminarTurno, editarTurno}: Props) => {
   return (
     <section className="flex min-w-0 grow basis-140 flex-col gap-5 rounded-[14px] border border-borde bg-superficie p-7">
       <div>
@@ -32,7 +33,7 @@ export const ListaTurnos = ({turnos, eliminarTurno}: Props) => {
           </thead>
           <tbody>
             {turnos.map((turno) => (
-              <FilaTurno key={turno.id} turno={turno} eliminarTurno={eliminarTurno}/>
+              <FilaTurno key={turno.id} turno={turno} eliminarTurno={eliminarTurno} editarTurno={editarTurno}/>
             ))}
           </tbody>
         </table>
